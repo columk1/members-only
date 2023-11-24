@@ -1,3 +1,4 @@
+require('dotenv').config()
 const createError = require('http-errors')
 const express = require('express')
 const path = require('path')
@@ -5,9 +6,17 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 
 const indexRouter = require('./routes/index')
+const messageRouter = require('./routes/messages')
 const usersRouter = require('./routes/users')
 
 const app = express()
+
+const mongoose = require('mongoose')
+mongoose.set('strictQuery', false)
+connectDB().catch((err) => console.log(err))
+async function connectDB() {
+  await mongoose.connect(process.env.MONGODB_URI)
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -20,6 +29,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
+app.use('/messages', messageRouter)
 app.use('/users', usersRouter)
 
 // catch 404 and forward to error handler
