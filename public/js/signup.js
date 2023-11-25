@@ -5,6 +5,7 @@ const lastName = document.getElementById('lastName')
 const lastNameError = document.querySelector('#lastName ~ span.error')
 const email = document.getElementById('email')
 const emailError = document.querySelector('#email ~ span.error')
+const emailExistsError = document.getElementById('emailExistsError')
 const password = document.getElementById('password')
 const passwordError = document.querySelector('#password ~ span.error')
 const confirm_password = document.getElementById('confirm_password')
@@ -42,6 +43,7 @@ const getNameError = (name) => {
 
 function validateEmail() {
   if (email.validity.valid) {
+    //TODO Remove Email Exists Error if there is one
     emailError.className = 'error' // Reset the visual state of the message
     emailError.previousElementSibling.className = 'errorIcon activeIcon'
     emailError.previousElementSibling.firstChild.src = '/icons/check.svg'
@@ -130,10 +132,10 @@ password.onchange = () => {
   password.addEventListener('input', validatePassword)
 }
 
-confirm_password.addEventListener('change', validateConfirmPassword)
-confirm_password.onchange = () => {
-  confirm_password.removeEventListener('change', validateConfirmPassword)
-  confirm_password.addEventListener('input', validateConfirmPassword)
+confirmPassword.addEventListener('change', validateConfirmPassword)
+confirmPassword.onchange = () => {
+  confirmPassword.removeEventListener('change', validateConfirmPassword)
+  confirmPassword.addEventListener('input', validateConfirmPassword)
 }
 
 form.addEventListener('submit', (event) => {
