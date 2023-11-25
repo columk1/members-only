@@ -27,7 +27,8 @@ exports.signup = [
           lastName: lastName,
           email: email,
           password: password,
-          error: 'An account with this email address already exists',
+          emailError: 'An account with this email address already exists',
+          libs: ['signup'],
         })
         // const err = new Error('User already exists')
         // err.status = 400

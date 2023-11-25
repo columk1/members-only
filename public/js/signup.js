@@ -5,7 +5,6 @@ const lastName = document.getElementById('lastName')
 const lastNameError = document.querySelector('#lastName ~ span.error')
 const email = document.getElementById('email')
 const emailError = document.querySelector('#email ~ span.error')
-const emailExistsError = document.getElementById('emailExistsError')
 const password = document.getElementById('password')
 const passwordError = document.querySelector('#password ~ span.error')
 const confirm_password = document.getElementById('confirm_password')
@@ -20,7 +19,6 @@ function validateName(name) {
   //   name.setCustomValidity('')
   // }
   if (name.validity.valid) {
-    console.log(nameError)
     nameError.className = 'error'
     nameError.previousElementSibling.className = 'errorIcon activeIcon'
     nameError.previousElementSibling.firstChild.src = '/icons/check.svg'
@@ -43,7 +41,6 @@ const getNameError = (name) => {
 
 function validateEmail() {
   if (email.validity.valid) {
-    //TODO Remove Email Exists Error if there is one
     emailError.className = 'error' // Reset the visual state of the message
     emailError.previousElementSibling.className = 'errorIcon activeIcon'
     emailError.previousElementSibling.firstChild.src = '/icons/check.svg'

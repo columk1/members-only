@@ -55,8 +55,7 @@
             value=<%= locals.email %>
           />
           <p class="errorIcon"><img src="/icons/error.svg" alt="error icon" /></p>
-          <span class="error">Error message</span>
-          <span class="error active" id="emailExistsError"><%= locals.error %></span>
+          <span class="<%= locals.emailError ? "error active" : "error" %>"><%= locals.emailError %></span>
         </div>
 
         <div class="inputContainer">
