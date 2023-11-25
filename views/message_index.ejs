@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('header') -%>
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+  <ul>
+    <%if (messages.length !== 0) { %>
+    <% messages.forEach(message => { %>
+      <li><a href="<%= message.url %>"><%= message.title %></a> (<%= message.author.email %>)
+      <p><%= message.text %></p></li>
+    <% }) %>
+    <%} else { %> 
+        <li>There are no messages</li>
+    <%}%>
+  </ul>
+<%- include('footer') -%>

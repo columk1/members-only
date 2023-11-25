@@ -1,0 +1,93 @@
+<%- include('header') -%>
+<main>
+    <div class="hero">
+      <p>DEVHOUR</p>
+      <h1>Start your journey with us.</h1>
+      <h4>Discover Canada's diverse community of designers and developers.</h4>
+    </div>
+    <div class="formContainer">
+      <form novalidate action="" class="form">
+        <h2 class="title">Sign Up</h2>
+        <p>Already have an account? <a href="">Log in</a></p>
+
+        <div class="inputContainer">
+            <label for="firstName" class="label">First Name <span class="red">*</span></label>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              class="input"
+              placeholder="a"
+              required
+              minlength="1"
+            />
+            <p class="errorIcon"><img src="/icons/error.svg" alt="error icon" /></p>
+            <span class="error">Error message</span>
+          </div>
+
+          <div class="inputContainer">
+            <label for="lastName" class="label">Last Name <span class="red">*</span></label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              class="input"
+              placeholder="a"
+              required
+              minlength="1"
+            />
+            <p class="errorIcon"><img src="/icons/error.svg" alt="error icon" /></p>
+            <span class="error">Error message</span>
+          </div>
+
+        <div class="inputContainer">
+          <label for="email" class="label">Email <span class="red">*</span></label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="input"
+            placeholder="a"
+            required
+            autofocus
+          />
+          <p class="errorIcon"><img src="/icons/error.svg" alt="error icon" /></p>
+          <span class="error">Error message</span>
+        </div>
+
+        <div class="inputContainer">
+          <label for="password" class="label">Password <span class="red">*</span></label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="input"
+            placeholder="a"
+            required
+            minlength="8"
+          />
+          <p class="errorIcon"><img src="/icons/error.svg" alt="error icon" /></p>
+          <span class="error">Error message</span>
+        </div>
+
+        <div class="inputContainer">
+          <label for="confirm_password" class="label" data-help=" (passwords don't match) "
+            >Confirm Password <span class="red">*</span></label
+          >
+          <input
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+            class="input"
+            placeholder="a"
+            required
+          />
+          <p class="errorIcon"><img src="/icons/error.svg" alt="error icon" /></p>
+          <span class="error">Error message</span>
+        </div>
+        <div class="required"><span class="red">*</span> required</div>
+
+        <input type="submit" class="submitBtn" value="Create Account" />
+      </form>
+    </main>
+      <%- include('footer') -%>
