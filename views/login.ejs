@@ -1,0 +1,52 @@
+<%- include('header') -%>
+<main>
+    <div class="hero">
+      <p>DEVHOUR</p>
+      <h1>Start your journey with us.</h1>
+      <h4>Discover Canada's diverse community of designers and developers.</h4>
+    </div>
+    <div class="formContainer">
+
+      <% if (locals.currentUser) { %>
+        <h2 class="title">Welcome back <%= currentUser.username %></h1>
+        <a href="/logout">Log out</a>
+      <% } else { %>
+
+      <form novalidate action="/login" method="POST" class="form">
+        <h2 class="title">Log in</h2>
+        <p>Don't have an account yet? <a href="/register">Sign up</a></p>
+
+        <div class="inputContainer">
+          <label for="username" class="label">Email <span class="red">*</span></label>
+          <input
+            type="email"
+            name="username"
+            id="email"
+            class="input"
+            placeholder="a"
+            required
+            autofocus
+          />
+          <p class="errorIcon"><img src="/icons/error.svg" alt="error icon" /></p>
+          <span class="error"></span>
+        </div>
+
+        <div class="inputContainer">
+          <label for="password" class="label">Password <span class="red">*</span></label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="input"
+            placeholder="a"
+            required
+          />
+          <p class="errorIcon"><img src="/icons/error.svg" alt="error icon" /></p>
+          <span class="error">Error message</span>
+        </div>
+
+        <input type="submit" class="submitBtn" value="Log in" />
+      </form>
+      <% } %>
+    </main>
+      <%- include('footer') -%>

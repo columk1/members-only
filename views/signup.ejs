@@ -8,7 +8,7 @@
     <div class="formContainer">
       <form novalidate action="/register" method="POST" class="form">
         <h2 class="title">Sign Up</h2>
-        <p>Already have an account? <a href="">Log in</a></p>
+        <p>Already have an account? <a href="/login">Log in</a></p>
 
         <div class="inputContainer">
             <label for="firstName" class="label">First Name <span class="red">*</span></label>
@@ -20,7 +20,8 @@
               placeholder="a"
               required
               minlength="1"
-              value=<%= locals.firstName %>
+              value="<%= locals.firstName %>"
+              <% if (!locals.emailError) { %>autofocus<% } %>
             />
             <p class="errorIcon"><img src="/icons/error.svg" alt="error icon" /></p>
             <span class="error">Error message</span>
@@ -36,7 +37,7 @@
               placeholder="a"
               required
               minlength="1"
-              value=<%= locals.lastName %>
+              value="<%= locals.lastName %>"
             />
             <p class="errorIcon"><img src="/icons/error.svg" alt="error icon" /></p>
             <span class="error">Error message</span>
@@ -51,8 +52,8 @@
             class="input"
             placeholder="a"
             required
-            autofocus
-            value=<%= locals.email %>
+            <% if (locals.emailError) { %>autofocus<% } %>
+            value="<%= locals.email %>"
           />
           <p class="errorIcon"><img src="/icons/error.svg" alt="error icon" /></p>
           <span class="<%= locals.emailError ? "error active" : "error" %>"><%= locals.emailError %></span>
