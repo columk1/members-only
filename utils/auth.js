@@ -46,7 +46,7 @@ exports.signup = [
           password: encryptedPassword,
         })
         console.log({ user })
-        res.redirect('/messages')
+        res.redirect('/login')
       }
     }
   }),
