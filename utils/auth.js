@@ -51,3 +51,13 @@ exports.signup = [
     }
   }),
 ]
+
+exports.login = [
+  body('email').trim().isEmail().escape(),
+  body('password').trim().isLength({ min: 8 }).escape(),
+
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+  }),
+]

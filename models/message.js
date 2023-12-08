@@ -14,7 +14,7 @@ const MessageSchema = new Schema(
 )
 
 MessageSchema.virtual('formatted_date').get(function () {
-  return this.createdAt ? DateTime.fromJSDate(this.timestamp).toLocaleString(DateTime.DATE_MED) : ''
+  return this.createdAt ? DateTime.fromJSDate(this.createdAt).toLocaleString(DateTime.DATE_MED) : ''
 })
 
 module.exports = mongoose.model('Message', MessageSchema)
