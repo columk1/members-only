@@ -65,7 +65,7 @@ async function createUsers() {
   console.log('Creating users')
   await Promise.all([
     userCreate(0, 'Rick', 'Sanchez', 'rick@example.com', 'secret', 'admin'),
-    userCreate(1, 'Morty', 'Smith', ',morty@example.com', 'secret'),
+    userCreate(1, 'Morty', 'Smith', 'morty@example.com', 'secret'),
     userCreate(2, 'Summer', 'Smith', 'summer@example.com', 'secret'),
     userCreate(3, 'Beth', 'Smith', 'beth@example.com', 'secret'),
     userCreate(4, 'Jerry', 'Smith', 'jerry@example.com', 'secret'),

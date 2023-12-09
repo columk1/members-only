@@ -46,6 +46,23 @@ body {
   background-image: conic-gradient(from 0deg at 0% 0%, #e2c0fe 0%, #86d9fd 100%);
 }
 
+header {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+footer {
+  min-height: 1rem;
+  margin-top: 1rem;
+}
+
 main {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -57,7 +74,7 @@ main {
   border-radius: 8px;
 }
 
-.message-container {
+.main-container {
   max-width: 900px;
   margin: 0 auto;
   display: flex;
@@ -65,15 +82,21 @@ main {
   gap: 1rem;
 }
 
+.page-title {
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
+}
+
 .message {
-  padding: 20px;
-  padding-bottom: 24px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
   background-color: rgb(31, 50, 81);
   border-radius: 6px;
   color: rgb(247, 250, 253);
+  font-size: 0.95rem;
 }
 
 .message-header {
@@ -81,11 +104,10 @@ main {
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
-  font-size: 0.85rem;
 }
 
 .message-title {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: bold;
 }
 
@@ -93,7 +115,12 @@ main {
   display: flex;
   align-items: baseline;
   gap: 1rem;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.user-display {
+  display: flex;
+  justify-content: space-between;
 }
 
 .hero {
@@ -243,6 +270,17 @@ input:has(~ .active) {
   color: var(--grey);
 }
 
+button {
+  padding: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: #7c5df3;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+}
+
 .submitBtn {
   width: 40%;
   margin: 0 0 10px;
@@ -257,6 +295,30 @@ input:has(~ .active) {
 .submitBtn:hover {
   border: 1px solid #aa00ff;
   box-shadow: 0px 0px 6px 2px rgba(183, 0, 255, 0.1);
+}
+
+.new-message-btn {
+  width: 20%;
+}
+
+dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2.5rem;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+}
+
+dialog > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+::backdrop {
+  background-color: #000;
+  opacity: 0.25;
 }
 
 @media screen and (max-width: 500px) {

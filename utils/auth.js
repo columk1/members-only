@@ -61,3 +61,23 @@ exports.login = [
     failureRedirect: '/login',
   }),
 ]
+
+exports.join = [
+  body('secret').trim().escape(),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req)
+    const { firstName, lastName, email, password } = req.body
+
+    if (!errors.isEmpty()) {
+      const err = new Error(errors[0])
+      err.status = 400
+      return next(err)
+    } else {
+      const user = await User.findOne({ email: req.user.email })
+      if (user) {
+        // Todo: Update user's membership status
+      }
+      res.redirect('/messages')
+    }
+  }),
+]

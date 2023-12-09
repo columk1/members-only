@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { signup, login } = require('../utils/auth')
+const { signup, login, join } = require('../utils/auth')
 
 /* GET home page. */
 router.get('/', (req, res) => {
@@ -23,5 +23,7 @@ router.post('/login', login)
 router.get('/logout', (req, res, next) => {
   req.logout((err) => (err ? next(err) : res.redirect('/')))
 })
+
+router.post('/join', join)
 
 module.exports = router

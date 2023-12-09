@@ -1,11 +1,14 @@
 <%- include('header') -%>
+<div class="main-container">
+<div class="page-title">
   <h1><%= title %></h1>
-  <p>Welcome to <%= title %></p>
+</div>
   <% if (currentUser) { %>
-    <h1>WELCOME BACK <%= currentUser.first_name %></h1>
-    <a href="/logout">LOG OUT</a>
+    <div class="user-display">
+    <h1>Welcome back <%= currentUser.first_name %></h1>
+    <button class="new-message-btn">+ New Message</button>
+  </div>
   <% } %>
-  <div class="message-container">
     <%if (messages.length !== 0) { %>
     <% messages.forEach(message => { %>
       <div class="message">
@@ -13,10 +16,12 @@
           <div class="message-title">
         <p><%= message.title %> </p>
       </div>
+      <% if (currentUser && currentUser.membership_status === 'admin') { %>
       <div class="message-details">
         <p><%= message.author.email %></p>
         <p><%=message.formatted_date %></p>
     </div>
+    <% } %>
         </div>
         <p><%= message.text %></p>
       </div>
@@ -24,8 +29,6 @@
     <%} else { %> 
         <p>There are no messages</p>
     <%}%>
-  <% if (currentUser) { %>
-    <h1>Create new Message</h1>
-  <% } %>
   </div>
+  <% console.log(currentUser) %>
 <%- include('footer') -%>

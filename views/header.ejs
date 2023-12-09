@@ -4,6 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="js/header.js" defer></script>
   <title><%= title %></title>
 </head>
 <body>
+  <header>
+    <div class="logo">
+    <h1>MembersOnly</h1>
+  </div>
+  <nav class="nav">
+    <% if (currentUser) { %>
+      <% if (currentUser.membership_status === 'admin') { %>
+      <button id="join-btn">Join Club</button>
+      <button onclick="window.location.href='/logout'">Logout</button>
+      <dialog>
+        <h3>Enter the secret key to become a member</h3>
+        <form method="POST" action="/join">
+          <input type="text" name="secret" autofocus>
+          <button type="submit">Submit</button>
+          <button type="button" id="close-btn">Close</button>
+        </form>
+        
+      </dialog>
+      <% } %>
+    <% } else { %>
+    <button onclick="window.location.href='/login'">Login</button>
+    <button onclick="window.location.href='/register'">Sign Up</button>
+    <% } %>
+    
+  </nav>
+  </header>
