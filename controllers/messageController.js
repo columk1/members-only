@@ -6,11 +6,45 @@ const { body, validationResult } = require('express-validator')
 
 exports.index = asyncHandler(async (req, res) => {
   const allMessages = await Message.find({}).populate('author').exec()
-  res.render('message_index', { title: 'Messages', messages: allMessages, libs: ['message_index'] })
+  const errors = req.session.errors
+  res.render('message_index', {
+    title: 'Messages',
+    messages: allMessages,
+    errors: errors,
+    libs: ['message_index'],
+  })
+  // Clear the errors array from the session after the page has been rendered
+  req.session.errors = undefined
+  req.session.save((err) => {
+    if (err) {
+      throw err
+    }
+  })
 })
 
 exports.message_create_post = [
   // Validate and sanitize fields
   body('title', 'Title must not be empty.').trim().isLength({ min: 1 }).escape(),
   body('text', 'Text must not be empty.').trim().isLength({ min: 1 }).escape(),
+
+  asyncHandler(async (req, res) => {
+    const errors = validationResult(req)
+
+    const message = new Message({
+      title: req.body.title,
+      text: req.body.text,
+      author: req.user._id,
+    })
+
+    if (!errors.isEmpty()) {
+      // TODO: Display these errors
+      req.session.errors = errors.array()
+      res.redirect('/messages')
+      return
+    } else {
+      // Data from form is valid
+      await message.save()
+      res.redirect('/messages')
+    }
+  }),
 ]

@@ -8,6 +8,12 @@
     <h1>Welcome back <%= currentUser.first_name %></h1>
     <button id="new-message-btn">+ New Message</button>
   </div>
+  <% if (locals.errors) {%>
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <%= locals.errors[0].msg %>
+    </div>
+    <% } %>
   <dialog class="new-message-dialog">
     <h3>Create a new message</h3>
     <form method="POST" action="messages/new">
@@ -17,7 +23,7 @@
     </div>
     <div class="inputContainer">
       <label for="message" class="label">Message</label>
-      <textarea id="message-text" name="message" rows="5" cols="60"></textarea>
+      <textarea id="message-text" name="text" rows="5" cols="60"></textarea>
     </div>
       <button type="submit">Submit</button>
       <button type="button" class="close-btn">Cancel</button>
