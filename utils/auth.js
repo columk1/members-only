@@ -5,6 +5,12 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const User = require('../models/user')
 
+const ACTIVE_SECRET = 'beans'
+const ADMIN_SECRET = 'legumes'
+
+const getMembershipStatus = (secret) =>
+  secret === ADMIN_SECRET ? 'admin' : secret === ACTIVE_SECRET ? 'active' : null
+
 exports.signup = [
   body('firstName').trim().isLength({ min: 1 }).escape(),
   body('lastName').trim().isLength({ min: 1 }).escape(),
@@ -66,17 +72,18 @@ exports.join = [
   body('secret').trim().escape(),
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req)
-    const { firstName, lastName, email, password } = req.body
+    const { secret } = req.body
+    let newStatus = getMembershipStatus(secret)
+    if (!newStatus) errors.push('Invalid secret')
 
     if (!errors.isEmpty()) {
       const err = new Error(errors[0])
       err.status = 400
       return next(err)
     } else {
-      const user = await User.findOne({ email: req.user.email })
-      if (user) {
-        // Todo: Update user's membership status
-      }
+      const updatedUser = await User.findByIdAndUpdate(req.user._id, {
+        membership_status: newStatus,
+      })
       res.redirect('/messages')
     }
   }),

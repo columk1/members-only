@@ -14,9 +14,9 @@
   </div>
   <nav class="nav">
     <% if (currentUser) { %>
-      <% if (currentUser.membership_status === 'admin') { %>
-      <button id="join-btn">Join Club</button>
       <button onclick="window.location.href='/logout'">Logout</button>
+      <% if (currentUser.membership_status === 'inactive') { %>
+      <button id="join-btn">Join Club</button>
       <dialog>
         <h3>Enter the secret key to become a member</h3>
         <form method="POST" action="/join">
@@ -24,7 +24,6 @@
           <button type="submit">Submit</button>
           <button type="button" id="close-btn">Close</button>
         </form>
-        
       </dialog>
       <% } %>
     <% } else { %>

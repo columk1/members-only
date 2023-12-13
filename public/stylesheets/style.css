@@ -15,6 +15,7 @@ a {
   --redAlpha: rgba(237, 53, 72, 0.1);
   --green: #1ebc42;
   --greenAlpha: rgb(53, 237, 149, 0.1);
+  --purple: #6350ae;
 }
 
 html {
@@ -93,22 +94,22 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  background-color: rgb(31, 50, 81);
+  background-color: var(--purple);
   border-radius: 6px;
   color: rgb(247, 250, 253);
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.75rem;
 }
 
 .message-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   gap: 1rem;
 }
 
 .message-title {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: bold;
 }
 
@@ -116,7 +117,11 @@ main {
   display: flex;
   align-items: baseline;
   gap: 1rem;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
+}
+
+.message-text {
+  letter-spacing: 0.018rem;
 }
 
 .user-display {
@@ -154,7 +159,7 @@ main {
 
 .formContainer a {
   font-weight: bold;
-  color: #7c5df3;
+  color: var(--purple);
 }
 
 .formContainer a:hover {
@@ -275,7 +280,7 @@ button {
   padding: 12px;
   font-size: 0.9rem;
   font-weight: 600;
-  background-color: #7c5df3;
+  background-color: var(--purple);
   color: white;
   cursor: pointer;
   border: none;
@@ -288,7 +293,7 @@ button {
   padding: 12px;
   font-size: 0.9rem;
   font-weight: 600;
-  background-color: #7c5df3;
+  background-color: var(--purple);
   color: white;
   cursor: pointer;
 }

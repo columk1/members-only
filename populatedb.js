@@ -100,7 +100,7 @@ async function createMessages() {
     messageCreate(
       4,
       'Help Me Please',
-      "How do you settle disputes with alternate reality you? He's my best friend I don't want to lose him.",
+      "How do you settle disputes with alternate reality you? He's my best friend I don't want to lose him!",
       users[4]
     ),
     messageCreate(

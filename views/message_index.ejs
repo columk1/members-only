@@ -16,14 +16,14 @@
           <div class="message-title">
         <p><%= message.title %> </p>
       </div>
-      <% if (currentUser && currentUser.membership_status === 'admin') { %>
+      <% if (currentUser && currentUser.membership_status === 'active') { %>
       <div class="message-details">
         <p><%= message.author.email %></p>
         <p><%=message.formatted_date %></p>
     </div>
     <% } %>
         </div>
-        <p><%= message.text %></p>
+        <p class="message-text"><%= message.text %></p>
       </div>
     <% }) %>
     <%} else { %> 
