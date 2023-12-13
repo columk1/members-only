@@ -6,8 +6,23 @@
   <% if (currentUser) { %>
     <div class="user-display">
     <h1>Welcome back <%= currentUser.first_name %></h1>
-    <button class="new-message-btn">+ New Message</button>
+    <button id="new-message-btn">+ New Message</button>
   </div>
+  <dialog class="new-message-dialog">
+    <h3>Create a new message</h3>
+    <form method="POST" action="messages/new">
+      <div class="inputContainer">
+      <label for="title" class="label">Title</label>
+      <input type="text" name="title" autofocus>
+    </div>
+    <div class="inputContainer">
+      <label for="message" class="label">Message</label>
+      <textarea id="message-text" name="message" rows="5" cols="60"></textarea>
+    </div>
+      <button type="submit">Submit</button>
+      <button type="button" class="close-btn">Cancel</button>
+    </form>
+  </dialog>
   <% } %>
     <%if (messages.length !== 0) { %>
     <% messages.forEach(message => { %>

@@ -1,6 +1,6 @@
-const dialog = document.querySelector('dialog')
+const joinDialog = document.querySelector('.join-dialog')
 const joinBtn = document.getElementById('join-btn')
-const closeBtn = document.getElementById('close-btn')
+const closeJoinDialogBtn = document.querySelector('.join-dialog .close-btn')
 
-joinBtn.addEventListener('click', () => dialog.showModal())
-closeBtn.addEventListener('click', () => dialog.close())
+joinBtn.addEventListener('click', () => joinDialog.showModal())
+closeJoinDialogBtn.addEventListener('click', () => joinDialog.close())
