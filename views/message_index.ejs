@@ -19,11 +19,11 @@
     <form method="POST" action="messages/new">
       <div class="inputContainer">
       <label for="title" class="label">Title</label>
-      <input type="text" name="title" autofocus>
+      <input type="text" name="title" placeholder="Title"required autofocus>
     </div>
     <div class="inputContainer">
       <label for="message" class="label">Message</label>
-      <textarea id="message-text" name="text" rows="5" cols="60"></textarea>
+      <textarea id="message-text" name="text" rows="5" cols="60" required></textarea>
     </div>
       <button type="submit">Submit</button>
       <button type="button" class="close-btn">Cancel</button>
@@ -35,9 +35,9 @@
       <div class="message">
         <div class="message-header">
           <div class="message-title">
-        <p><%= message.title %> </p>
+        <p><%= message.title %></p>
       </div>
-      <% if (currentUser && currentUser.membership_status === 'active') { %>
+      <% if (currentUser && currentUser.membership_status !== 'inactive') { %>
       <div class="message-details">
         <p><%= message.author.email %></p>
         <p><%=message.formatted_date %></p>
@@ -45,6 +45,11 @@
     <% } %>
         </div>
         <p class="message-text"><%= message.text %></p>
+        <% if (currentUser &&currentUser.membership_status === 'admin') { %>
+        <div class="message-footer">
+        <button class="delete-btn" data-id="<%= message._id %>">Delete</button>
+        </div>
+        <% } %>
       </div>
     <% }) %>
     <%} else { %> 

@@ -37,7 +37,6 @@ exports.message_create_post = [
     })
 
     if (!errors.isEmpty()) {
-      // TODO: Display these errors
       req.session.errors = errors.array()
       res.redirect('/messages')
       return
@@ -48,3 +47,15 @@ exports.message_create_post = [
     }
   }),
 ]
+
+exports.message_delete_post = asyncHandler(async (req, res) => {
+  const message = await Message.findById(req.params.id)
+  // The error condition below isn't reached. If the Id isn't found the server throws a 404 error
+  if (message === null) {
+    req.session.errors = ['Invalid Id']
+    res.redirect('/messages')
+  } else {
+    await message.deleteOne()
+    res.redirect('/messages')
+  }
+})
