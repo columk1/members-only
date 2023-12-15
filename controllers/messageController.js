@@ -49,6 +49,7 @@ exports.message_create_post = [
 ]
 
 exports.message_delete_post = asyncHandler(async (req, res) => {
+  if (req.user.membership_status !== 'admin') res.status(401)
   const message = await Message.findById(req.params.id)
   // The error condition below isn't reached. If the Id isn't found the server throws a 404 error
   if (message === null) {

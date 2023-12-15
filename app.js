@@ -32,13 +32,13 @@ app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }))
 // TODO Remove loggers
 
 passport.use(
-  new LocalStrategy(async (username, password, done) => {
+  new LocalStrategy({ usernameField: 'email' }, async (username, password, done) => {
     console.log('New Local Strategy')
     try {
       const user = await User.findOne({ email: username })
       if (!user) {
         console.log('Incorrect username')
-        return done(null, false, { message: 'Incorrect username' })
+        return done(null, false, { message: 'Email address not found' })
       }
       const match = await bcrypt.compare(password, user.password)
       if (!match) {

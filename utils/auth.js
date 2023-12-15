@@ -63,6 +63,7 @@ exports.login = [
   body('password').trim().isLength({ min: 8 }).escape(),
 
   passport.authenticate('local', {
+    failureMessage: true,
     successRedirect: '/',
     failureRedirect: '/login',
   }),

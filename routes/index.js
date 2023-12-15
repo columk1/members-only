@@ -14,8 +14,14 @@ router.get('/register', (req, res) => {
 
 router.post('/register', signup)
 
-router.get('/login', (req, res) => {
-  res.render('login', { title: 'Login' })
+router.get('/login', async (req, res) => {
+  res.render('login', { title: 'Login', errors: req.session.messages })
+  req.session.messages = undefined
+  req.session.save((err) => {
+    if (err) {
+      throw err
+    }
+  })
 })
 
 router.post('/login', login)
