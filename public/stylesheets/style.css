@@ -54,6 +54,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  color: var(--primaryDark);
 }
 
 nav {
@@ -89,6 +90,7 @@ main {
   display: grid;
   place-items: center;
   margin-bottom: 1rem;
+  color: var(--primaryDark);
 }
 
 .message {
