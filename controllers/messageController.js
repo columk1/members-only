@@ -43,20 +43,19 @@ exports.message_create_post = [
     } else {
       // Data from form is valid
       await message.save()
-      res.redirect('/messages')
+      res.redirect('/')
     }
   }),
 ]
 
 exports.message_delete_post = asyncHandler(async (req, res) => {
   if (req.user.membership_status !== 'admin') res.status(401)
-  const message = await Message.findById(req.params.id)
+  const deletedMsg = await Message.findByIdAndDelete(req.params.id)
   // The error condition below isn't reached. If the Id isn't found the server throws a 404 error
-  if (message === null) {
+  if (!deletedMsg) {
     req.session.errors = ['Invalid Id']
     res.redirect('/messages')
   } else {
-    await message.deleteOne()
-    res.redirect('/messages')
+    res.status(200).json({ data: deletedMsg })
   }
 })
