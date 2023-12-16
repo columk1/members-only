@@ -4,7 +4,8 @@ const deleteBtns = document.querySelectorAll('.delete-btn')
 const closeMessageDialogBtn = document.querySelector('.new-message-dialog .close-btn')
 
 newMessageBtn && newMessageBtn.addEventListener('click', () => newMessageDialog.showModal())
-closeMessageDialogBtn.addEventListener('click', () => newMessageDialog.close())
+closeMessageDialogBtn &&
+  closeMessageDialogBtn.addEventListener('click', () => newMessageDialog.close())
 
 deleteBtns &&
   deleteBtns.forEach((button) => {
