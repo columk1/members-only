@@ -7,10 +7,6 @@ a {
   color: #00b7ff;
 }
 
-button a {
-  color: white;
-}
-
 :root {
   --primaryDark: rgb(31, 50, 81);
   --lightGrey: rgb(214, 226, 240);
@@ -313,6 +309,23 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 3px;
+  border: 1px solid var(--purple);
+}
+
+.page-item button {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-content: center;
+  border: 1px solid var(--purple);
+}
+
+button:hover {
+  transform: scale(1.03);
+}
+
+.active a button {
+  background-color: #ab83fa;
 }
 
 .submitBtn {
