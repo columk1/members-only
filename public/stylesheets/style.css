@@ -7,6 +7,10 @@ a {
   color: #00b7ff;
 }
 
+button a {
+  color: white;
+}
+
 :root {
   --primaryDark: rgb(31, 50, 81);
   --lightGrey: rgb(214, 226, 240);
@@ -128,6 +132,18 @@ main {
 .messages-status {
   display: grid;
   place-items: center;
+}
+
+.page-nav {
+  display: grid;
+  place-content: center;
+}
+
+.page-nav ul {
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
 }
 
 .user-display {

@@ -5,11 +5,25 @@ const asyncHandler = require('express-async-handler')
 const { body, validationResult } = require('express-validator')
 
 exports.index = asyncHandler(async (req, res) => {
-  const allMessages = await Message.find({}).populate('author').exec()
+  const LIMIT = 5
+  const page = +req.query.page || 1
+  const msgCount = await Message.countDocuments({})
+  const allMessages = await Message.find({})
+    .skip((page - 1) * LIMIT)
+    .limit(LIMIT)
+    .populate('author')
+    .exec()
   const errors = req.session.errors
   res.render('message_index', {
     title: 'Messages',
     messages: allMessages,
+    currentPage: page,
+    // prettier-ignore
+    hasNextPage: (LIMIT * page) < msgCount,
+    hasPreviousPage: page > 1,
+    nextPage: page + 1,
+    previousPage: page - 1,
+    lastPage: Math.ceil(msgCount / LIMIT),
     errors: errors,
     libs: ['message_index'],
   })
