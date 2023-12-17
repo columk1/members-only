@@ -23,4 +23,4 @@ An Assignment from The Odin Project.
 
 ## Diagrams
 
-![Uml Diagram](./screenshots/uml.png)
+![Uml Diagram](./screenshots/uml-diagram.png)
