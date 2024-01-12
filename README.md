@@ -20,6 +20,7 @@ An Assignment from The Odin Project.
 ## To Do
 
 - Refactor local strategy and auth middleware to separate files
+- Refactor login to remove duplicate code
 
 ## Diagrams
 
